@@ -1,0 +1,149 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+body {
+	margin: 0px;
+	font-family: Helvetica;
+	font-size: 14px;
+	background: #d8dae6;
+	overflow: hidden; /* Hide scrollbars */
+}
+
+#menu{
+	width: 100%;
+	margin: 0;
+	padding: 0 0 0 0;
+	border: none;
+	list-style: none;
+	height: 32.8px;
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2a356d+0,1a245d+100,00126d+100 */
+background: rgb(42,53,109); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(42,53,109,1) 0%, rgba(26,36,93,1) 100%, rgba(0,18,109,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(42,53,109,1) 0%,rgba(26,36,93,1) 100%,rgba(0,18,109,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(42,53,109,1) 0%,rgba(26,36,93,1) 100%,rgba(0,18,109,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a356d', endColorstr='#00126d',GradientType=0 ); /* IE6-9 */
+
+}
+
+#menu li{
+	float: left;
+	/* padding: 8 20 8 20; */
+	position: relative;
+}
+
+#menu a{
+	float: left;
+	padding: 8 20 8 20;
+	color: white;
+	text-decoration: none;
+}
+
+#menu a.klickme {
+	visibility: hidden !important;
+}
+
+#menu li:hover.klickme {
+	pointer-events: none !important;
+}
+
+#menu li:hover {
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#53894f+0,13890b+100 */
+background: rgb(83,137,79); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(83,137,79,1) 0%, rgba(19,137,11,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(83,137,79,1) 0%,rgba(19,137,11,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(83,137,79,1) 0%,rgba(19,137,11,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#53894f', endColorstr='#13890b',GradientType=0 ); /* IE6-9 */
+
+}
+
+#menu > li:first-child
+{
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#53894f+0,13890b+100 */
+background: rgb(83,137,79); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(83,137,79,1) 0%, rgba(19,137,11,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(83,137,79,1) 0%,rgba(19,137,11,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(83,137,79,1) 0%,rgba(19,137,11,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#53894f', endColorstr='#13890b',GradientType=0 ); /* IE6-9 */
+
+}
+
+
+/* Clear floated elements */
+#menu:after{
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+#menu > li:nth-last-child(2),
+#menu > li:nth-last-child(1)
+{
+    float:right;
+}
+
+ /* Style buttons */
+.button {
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#53894f+0,13890b+100 */
+background: rgb(83,137,79); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(83,137,79,1) 0%, rgba(19,137,11,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(83,137,79,1) 0%,rgba(19,137,11,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(83,137,79,1) 0%,rgba(19,137,11,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#53894f', endColorstr='#13890b',GradientType=0 ); /* IE6-9 */
+
+  /* border-top: 1px solid silver; */
+	/* border-bottom: 1px solid black; */
+	/* border-left: 1px solid silver; */
+	/* border-right: 1px solid black; */
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+  color: white;
+  padding: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 50px;
+	border: none;
+}
+
+/* Darker background on mouse-over */
+.button:hover {
+  background-color: red;
+}
+
+</style>
+
+<body>
+
+<ul id="menu">
+  <li><a target="_blank" href="#">Web</a></li>
+  <li><a target="_blank" href="https://www.google.com/search?q=demons+medieval+illustrations&tbm=isch&ved=2ahUKEwjYj-T-_8zpAhVEIMUKHeulDNcQ2-cCegQIABAA&oq=demons+medieval+illustrations&gs_lcp=CgNpbWcQAzoECAAQQzoCCAA6BAgAEB46BAgAEBM6CAgAEAUQHhATOggIABAIEB4QEzoGCAAQHhATUKcoWJRgYIthaABwAHgAgAG9AYgBhhWSAQQ0LjE5mAEAoAEBqgELZ3dzLXdpei1pbWc&sclient=img&ei=h6vKXpiwMcTAlAbry7K4DQ&bih=732&biw=1344&client=firefox-b-d&hl=de">Images</a></li>
+  <li><a target="_blank" href="#">News</a></li>
+  <li><a target="_blank" href="#">Places</a></li>
+  <li><a target="_blank" href="https://www.google.com/maps/place/5249-5201+Carson+Pl,+Lawrence,+KS+66049,+USA/@38.9730921,-95.875269,9z/data=!4m13!1m7!3m6!1s0x87bf40c7ce479883:0x151713d50478ab2e!2sLawrence,+Kansas,+USA!3b1!8m2!3d38.9716689!4d-95.2352501!3m4!1s0x87bf6c26ed66ca11:0xed4d20f92c40d893!8m2!3d38.9783868!4d-95.3140842">Maps</a></li>
+  <li><a target="_blank" href="https://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q=monsters+demons+ghosts&btnG=">Documents</a></li>
+  <li><a target="_blank" href="https://www.thrall.org/readyref/Paranormal.html">More +</a></li>
+  <li class="klickme"><a target="_blank" class="klickme">TEST</a></li>
+  <li><a target="_blank" href="#">location <i class="fa fa-times-circle"></i></a></li>
+  <li><a target="_blank" href="#">settings <i class="fa fa-cog"></i></a></li>
+</ul>
+
+<table width="100%" height="100%" align="center" cellspacing="0" cellpadding="0" border="0">
+	<tr>
+		<td align="center" valign="middle">
+			<div style="text-align: center;">
+				<div style="display: inline-block; text-align: left;">
+					<form action="https://www.google.com/search" class="searchform" method="get" name="searchform" target="_blank">
+						<input name="sitesearch" type="hidden" value="">
+						<input autocomplete="on" class="form-control search" name="q" placeholder="Search in example.com" required="required" type="text" size="80" style="height: 30px; border-top: 1px solid black; border-left: 1px solid black; border-bottom: 1px solid silver; border-right: 1px solid silver;"><button class="button" type="submit"><i class="fa fa-search"></i></button>
+						<p style="font-size: 11px; color: #404040;">over 55 billion searchable web pages indexed.</p>
+					</form>
+				</div>
+				<p style="margin-top: 50px;">Enter search terms <a target="_blank" href="#">En Espa&ntilde;ol</p>
+			</div>
+		</td>
+	</tr>
+</table>
+</body>
