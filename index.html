@@ -200,10 +200,10 @@
         const sheetHeight = parseInt(sheetContent.style.height);
 
         // Schwellenwerte für das Schließen oder Maximieren
-        if (sheetHeight < 45) {
-          hideBottomSheet(); // Schließen, wenn kleiner als 45%
-        } else if (sheetHeight > 75) {
-          updateSheetHeight(100); // Vollbild bei mehr als 75%
+        if (sheetHeight < 35) {
+          hideBottomSheet(); // Schließen, wenn kleiner als 35%
+        } else if (sheetHeight > 65) {
+          updateSheetHeight(100); // Vollbild bei mehr als 65%
         } else {
           updateSheetHeight(50); // Zurück zu 50% Höhe
         }
