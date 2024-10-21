@@ -204,7 +204,7 @@ const dragStart = (e) => {
 // Ziehvorgang (mit verringerter Sensibilität)
 const dragging = (e) => {
   if (!isDragging) return;
-  const delta = (startY - (e.pageY || e.touches?.[0].pageY)) * 5.2; // Sensibilität reduziert
+  const delta = (startY - (e.pageY || e.touches?.[0].pageY)); // Sensibilität reduziert
   const newHeight = startHeight + (delta / window.innerHeight) * 100;
   updateSheetHeight(Math.min(Math.max(newHeight, 0), 100)); // Begrenze zwischen 0% und 100%
 };
