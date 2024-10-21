@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <style>
-    /* Basis-Styling für die Seite */
+    /* Basis-Styling */
     * {
       margin: 0;
       padding: 0;
@@ -21,118 +21,71 @@
       background-color: #1e1c27;
       color: white;
     }
-
-    /* Styling für den Button zum Öffnen des Modals */
     .show-modal-btn {
-      outline: none;
-      border: none;
       cursor: pointer;
-      color: #fff;
-      border-radius: 6px;
-      font-size: 1.2rem;
-      padding: 15px 22px;
       background: #4a98f7;
-      transition: 0.3s ease;
-      box-shadow: 0 10px 18px rgba(52, 87, 220, 0.18);
+      border: none;
+      padding: 15px 22px;
+      border-radius: 6px;
+      color: white;
+      font-size: 1.2rem;
+      transition: 0.3s;
     }
     .show-modal-btn:hover {
       background: #2382f6;
     }
-
-    /* Container für das Bottom Sheet */
     .bottom-sheet-container {
       position: fixed;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       display: flex;
-      opacity: 0;
-      pointer-events: none; /* Standardmäßig nicht klickbar */
+      justify-content: flex-end;
       align-items: center;
-      flex-direction: column;
-      justify-content: flex-end; /* Sheet wird von unten eingeblendet */
+      opacity: 0;
+      pointer-events: none;
       transition: 0.1s linear;
     }
     .bottom-sheet-container.show {
       opacity: 1;
-      pointer-events: auto; /* Aktiviert, wenn das Modal sichtbar ist */
+      pointer-events: auto;
     }
-
-    /* Overlay hinter dem Modal */
     .sheet-overlay {
       position: fixed;
       top: 0;
       left: 0;
-      z-index: -1;
       width: 100%;
       height: 100%;
-      opacity: 0.2;
       background: #000;
+      opacity: 0.2;
     }
-
-    /* Inhalt des Modals */
     .sheet-content {
       width: 100%;
-      position: relative;
-      background: #fff;
-      max-height: 100vh;
-      height: 50vh; /* Start-Höhe des Modals bei 50% */
+      background: white;
+      height: 50vh;
       max-width: 1150px;
-      padding: 25px 30px;
-      transform: translateY(100%); /* Startet außerhalb des Viewports */
+      transform: translateY(100%);
       border-radius: 12px 12px 0 0;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
-      transition: 0.3s ease; /* Animation bei Positionsänderungen */
-      color: black;
+      transition: 0.3s;
     }
-    .bottom-sheet-container.show .sheet-content {
-      transform: translateY(0%); /* Vollständig sichtbar */
-    }
-    .bottom-sheet-container.dragging .sheet-content {
-      transition: none; /* Deaktiviert Animation während des Ziehens */
-    }
-    .bottom-sheet-container.fullscreen .sheet-content {
-      border-radius: 0;
-      overflow-y: hidden; /* Vollbild-Modus */
-    }
-
-    /* Header und Drag-Icon */
     .sheet-header {
       display: flex;
       justify-content: center;
-    }
-    .drag-icon {
-      cursor: grab; /* Icon wird greifbar angezeigt */
-      user-select: none;
       padding: 15px;
-      margin-top: -15px;
     }
     .drag-icon span {
-      height: 4px;
       width: 40px;
-      display: block;
+      height: 4px;
       background: #c7d0e1;
       border-radius: 50px;
     }
-
-    /* Scrollbarer Body-Bereich des Modals */
     .sheet-body {
-      height: 100%;
-      overflow-y: auto; /* Inhalt wird scrollbar, wenn er zu groß wird */
-      padding: 15px 0 40px;
-      scrollbar-width: none;
-    }
-    .sheet-body::-webkit-scrollbar {
-      width: 0; /* Versteckt den Scrollbalken auf WebKit-Browsern */
+      padding: 15px;
+      overflow-y: auto;
     }
   </style>
 
   <body>
-    <!-- Button zum Öffnen des Bottom Sheets -->
     <button class="show-modal-btn">Show Bottom Sheet</button>
-
-    <!-- Bottom Sheet Container -->
     <div class="bottom-sheet-container">
       <div class="sheet-overlay"></div>
       <div class="sheet-content">
@@ -141,10 +94,7 @@
         </div>
         <div class="sheet-body">
           <h2>Draggable Bottom Sheet Modal</h2>
-          <p>
-            Hier ist Beispielinhalt. Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit.
-          </p>
+          <p>Hier ist Beispielinhalt.</p>
         </div>
       </div>
     </div>
@@ -156,60 +106,76 @@
       const sheetOverlay = bottomSheetContainer.querySelector(".sheet-overlay");
 
       let isDragging = false;
-      let startY, startHeight;
+      let startY, startHeight, startTime;
 
       // Öffnen des Modals
       const showBottomSheet = () => {
         bottomSheetContainer.classList.add("show");
-        document.body.style.overflowY = "hidden"; // Scrollen deaktivieren
-        updateSheetHeight(50); // Modal bei 50% Höhe starten
+        document.body.style.overflowY = "hidden";
+        updateSheetHeight(50); // Start bei 50% Höhe
       };
 
-      // Aktualisiere die Höhe des Modals
+      // Aktualisiere die Höhe
       const updateSheetHeight = (height) => {
-        sheetContent.style.height = `${height}vh`; // Höhe in Prozent des Viewports
+        sheetContent.style.height = `${height}vh`;
         bottomSheetContainer.classList.toggle("fullscreen", height === 100);
       };
 
       // Schließen des Modals
       const hideBottomSheet = () => {
         bottomSheetContainer.classList.remove("show");
-        document.body.style.overflowY = "auto"; // Scrollen reaktivieren
+        document.body.style.overflowY = "auto";
       };
 
       // Ziehvorgang starten
       const dragStart = (e) => {
         isDragging = true;
-        startY = e.pageY || e.touches?.[0].pageY; // Startposition erfassen
-        startHeight = parseInt(sheetContent.style.height); // Aktuelle Höhe merken
+        startY = e.pageY || e.touches?.[0].pageY;
+        startHeight = parseInt(sheetContent.style.height);
+        startTime = new Date().getTime(); // Zeit des Startpunkts speichern
         bottomSheetContainer.classList.add("dragging");
       };
 
       // Ziehvorgang
       const dragging = (e) => {
         if (!isDragging) return;
-        const deltaY = (startY - (e.pageY || e.touches?.[0].pageY)); // Differenz berechnen
+        const deltaY = startY - (e.pageY || e.touches?.[0].pageY);
         const newHeight = startHeight + (deltaY / window.innerHeight) * 100;
-        updateSheetHeight(Math.min(Math.max(newHeight, 0), 100)); // Höhe begrenzen
+        updateSheetHeight(Math.min(Math.max(newHeight, 0), 100));
       };
 
       // Ziehvorgang beenden
       const dragStop = () => {
         isDragging = false;
         bottomSheetContainer.classList.remove("dragging");
-        const sheetHeight = parseInt(sheetContent.style.height);
 
-        // Schwellenwerte für das Schließen oder Maximieren
-        if (sheetHeight < 35) {
-          hideBottomSheet(); // Schließen, wenn kleiner als 35%
-        } else if (sheetHeight > 70) {
-          updateSheetHeight(100); // Vollbild bei mehr als 70%
+        const sheetHeight = parseInt(sheetContent.style.height);
+        const endTime = new Date().getTime(); // Endzeitpunkt
+        const timeDiff = endTime - startTime; // Zeitdifferenz in ms
+        const velocity = Math.abs((startY - (event.pageY || event.touches?.[0].pageY)) / timeDiff);
+
+        // Prüfen auf Schnipser
+        const SNAP_THRESHOLD = 0.5; // Schwellenwert für Geschwindigkeit
+
+        if (velocity > SNAP_THRESHOLD) {
+          if (sheetHeight > 50) {
+            updateSheetHeight(100); // Nach oben fahren
+          } else {
+            hideBottomSheet(); // Nach unten schließen
+          }
         } else {
-          updateSheetHeight(50); // Zurück zu 50% Höhe
+          // Normales Verhalten basierend auf der Höhe
+          if (sheetHeight < 35) {
+            hideBottomSheet();
+          } else if (sheetHeight > 70) {
+            updateSheetHeight(100);
+          } else {
+            updateSheetHeight(50);
+          }
         }
       };
 
-      // Event Listener für Maus- und Touch-Events
+      // Event Listener
       sheetContent.addEventListener("mousedown", dragStart);
       document.addEventListener("mousemove", dragging);
       document.addEventListener("mouseup", dragStop);
