@@ -1,0 +1,310 @@
+/* Fonts und Icons importieren */
+@font-face {
+  font-family: 'Nunito';
+  src: url(_nunito.woff) format('woff');
+  font-style: bold, italic;
+}
+
+:root, :host {
+  --fa-style-family-classic: 'Font Awesome 6 Free';
+  --fa-font-regular: normal 400 1em/1 'Font Awesome 6 Free';
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("_fa-regular-400.woff2") format("woff2");
+}
+
+.far,
+.fa-regular {
+  font-weight: 400;
+}
+
+:root, :host {
+  --fa-style-family-classic: 'Font Awesome 6 Free';
+  --fa-font-solid: normal 900 1em/1 'Font Awesome 6 Free';
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("_fa-solid-900.woff2") format("woff2");
+}
+
+.fas,
+.fa-solid {
+  font-weight: 900;
+}
+
+
+/* Globale Stile für die ganze Karte */
+.card {
+	font-family: Nunito;
+	font-weight: 1000;
+	font-size: 24px;
+	color: #3e3e3e;
+	background-color: white;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+/* Der Tags-Block */
+.tags {
+	text-align: left;
+	min-height: 100px;
+}
+
+/* Das Tags Icon */
+.tags > i {
+	text-align: left;
+	color: grey;
+	font-size: 0.6em;
+}
+
+/* Die gesplitteten Tags-Boxen */
+#tags > span {
+	background-color: #f9f9f9;
+	border-radius: 4px;
+	border: 1px solid gainsboro;
+	display: inline-block;
+	color: grey;
+	font-size: 0.6em;
+	font-weight: 400;
+	height: 15px;
+	line-height: 15px;
+	padding: 4px 4px;
+	margin: 5px;
+	text-align: center;
+}
+
+/* Der Mittelteil mit Frage und Antwort */
+.question-answer, .question, .answer {
+	/* text-align: center;
+	margin-top: 50px; */
+	display: table; /* damit mehrzeiliger Text nach Icon bündig bleibt */
+}
+
+.question-answer > a {
+	text-decoration: none;
+	color: inherit;
+}
+
+p.question, p.answer {
+	display: table-cell; /* damit mehrzeiliger Text nach Icon bündig bleibt */
+}
+
+/* Schwedisch-Flexion */
+span.flexion {
+	font-size: 0.7em;
+	font-weight: bold;
+	color: grey;
+	display:inline-block; /* damit der Zeilenanstand im span greift */
+}
+
+/* Schwedisch-Info */
+span.flexion-info {
+	font-size: 0.7em;
+	font-weight: 100;
+	color: grey;
+	display:inline-block; /* damit der Zeilenanstand im span greift */
+}
+
+/* Nur für den anderen Notiztyp Verben konjugieren */
+span.de-klein {
+	font-size: 0.8em;
+	font-weight: 400;
+}
+
+/* Die Trennlinie zwischen Frage und Antwort */
+hr#answer {
+	border-style: solid;
+	height: 1px;
+    border-width: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    background-color: grey;
+}
+
+/* Nur für den anderen Notiztyp Verben konjugieren */
+/* Die Badges vor den Antworten */
+span.badge {
+	background-color: #f9f9f9;
+	border-radius: 4px;
+	border: 1px solid gainsboro;
+	display: inline-block;
+	color: grey;
+	font-size: 0.7em;
+	font-weight: 400;
+	height: 15px;
+	line-height: 15px;
+	padding: 4px 4px;
+	margin: 5px;
+	text-align: center;
+}
+
+/* Doppelte TTS-Ausspielung auf Android verhindern */
+.mobile .disabled {
+	display: none;
+	visibility: hidden;
+}
+
+/* Die Flaggen-Icons */
+img.flag {
+	width: 20px !important;
+	height: 20px !important;
+	margin-right: 20px !important;
+	position: relative;
+	top: 2px;
+	display: table-cell; /* damit mehrzeiliger Text rechts neben Icon bündig bleibt */
+	max-width: unset !important; /* damit mehrzeiliger Text rechts neben Icon nicht trotzdem nach links rutscht */	
+}
+
+/* Nur für den anderen Notiztyp Verben konjugieren */
+img.flag-de {
+	width: 20px !important;
+	height: 20px !important;
+	margin-right: 0.3em !important;
+	position: relative;
+	top: 4px;
+}
+
+/* Das Info-Icon */
+.info > i.fa-circle-info {
+	font-size: 0.8em;
+	margin-right: 0.1em;
+}
+
+/* Der Info Block im Bottom Sheet Modal */
+.info {
+	font-weight: 400;
+	font-size: 0.8em;
+}
+
+/* Dragable Bottom Sheet Modal */
+ /* Basis-Styling für die Seite */
+    /* * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #1e1c27;
+      color: white;
+    } */
+
+    /* Styling für den Button zum Öffnen des Modals */
+    .show-modal-btn {
+      outline: none;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 1.2rem;
+      padding: 15px 22px;
+      background: #4a98f7;
+      transition: 0.3s ease;
+      box-shadow: 0 10px 18px rgba(52, 87, 220, 0.18);
+    }
+    .show-modal-btn:hover {
+      background: #2382f6;
+    }
+
+    /* Container für das Bottom Sheet */
+    .bottom-sheet-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      opacity: 0;
+      pointer-events: none; /* Standardmäßig nicht klickbar */
+      align-items: center;
+      flex-direction: column;
+      justify-content: flex-end; /* Sheet wird von unten eingeblendet */
+      transition: 0.1s linear;
+    }
+    .bottom-sheet-container.show {
+      opacity: 1;
+      pointer-events: auto; /* Aktiviert, wenn das Modal sichtbar ist */
+    }
+
+    /* Overlay hinter dem Modal */
+    .sheet-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      opacity: 0.2;
+      background: #000;
+    }
+
+    /* Inhalt des Modals */
+    .sheet-content {
+      box-sizing: border-box; /* damit das Padding mit in die Gesamtbreite reinzählt */
+      width: 100%;
+      position: relative;
+      background: #fff;
+      max-height: 100vh;
+      height: 50vh; /* Start-Höhe des Modals bei 50% */
+      max-width: 1150px;
+      padding: 25px 30px;
+      transform: translateY(100%); /* Startet außerhalb des Viewports */
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+      transition: 0.3s ease; /* Animation bei Positionsänderungen */
+      color: black;
+    }
+    .bottom-sheet-container.show .sheet-content {
+      transform: translateY(0%); /* Vollständig sichtbar */
+    }
+    .bottom-sheet-container.dragging .sheet-content {
+      transition: none; /* Deaktiviert Animation während des Ziehens */
+    }
+    .bottom-sheet-container.fullscreen .sheet-content {
+      border-radius: 0;
+      overflow-y: hidden; /* Vollbild-Modus */
+    }
+
+    /* Header und Drag-Icon */
+    .sheet-header {
+      display: flex;
+      justify-content: center;
+    }
+    .drag-icon {
+      cursor: grab; /* Icon wird greifbar angezeigt */
+      user-select: none;
+      padding: 15px;
+      margin-top: -15px;
+    }
+    .drag-icon span {
+      height: 4px;
+      width: 40px;
+      display: block;
+      background: #c7d0e1;
+      border-radius: 50px;
+    }
+
+    /* Scrollbarer Body-Bereich des Modals */
+    .sheet-body {
+      height: 100%;
+      overflow-y: auto; /* Inhalt wird scrollbar, wenn er zu groß wird */
+      padding: 15px 0 40px;
+      scrollbar-width: none;
+    }
+    .sheet-body::-webkit-scrollbar {
+      width: 0; /* Versteckt den Scrollbalken auf WebKit-Browsern */
+    }
