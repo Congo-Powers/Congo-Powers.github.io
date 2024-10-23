@@ -1,9 +1,155 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <link rel="stylesheet" href="styles.css"> 
+       <link rel="stylesheet" href="_anki_base.css"> 
     </head>
     <body>
-      <p>Super Test!</p>
+      <!-- Block wird immer angezeigt, aber Inhalt wird nur ausgegeben, wenn das Feld "Tags" befüllt ist; Block hat feste Höhe, nimmt also den Platz immer ein; das zusätzliche span ist nötig, damit das Script unten die Tags richtig splittet. -->
+<div class="tags">
+	{{#Tags}}
+		<i class="fa-solid fa-tag"></i>
+		<span id="tags"><span>{{Tags}}<span></span>
+	{{/Tags}}
+</div>
+
+<!-- Script splittet die Tags in einzelne span-Blöcke. -->
+<script>
+	var elem = document.getElementById("tags");
+	var content = elem.innerHTML;
+	var tags = content.split(" ");
+	var newContent = tags.join("</span><span>");
+	elem.innerHTML = newContent;
+</script>
+
+<div class="question-answer">
+	<img class="flag" src="flag-de.png">
+		<p class="answer">
+
+			{{Deutsch}}
+			
+			{{#Deutsch-Info}}<br>
+				<span class="flexion-info">{{Deutsch-Info}}</span>
+			{{/Deutsch-Info}}
+
+		</p>
+</div>
+
+	<hr id=answer>
+
+<div class="question-answer">
+	<img class="flag" src="flag-sv.png">
+		<p class="question">
+
+				<tts service="android" voice="sv_SE">{{Schwedisch}}</tts>	
+				<span class="disabled">{{tts sv_SE:Schwedisch}}</span>
+	
+				{{#Schwedisch-Flexion}}<br>
+							<span class="flexion">
+								{{Schwedisch-Flexion}}
+							</span>
+				{{/Schwedisch-Flexion}}
+
+				{{#Schwedisch-Info}}<br>
+							<span class="flexion-info">
+								{{Schwedisch-Info}}
+							</span>
+				{{/Schwedisch-Info}}
+
+		</p>
+</div>
+
+<!-- Dragable Bottom Sheet Modal; wird nur angezeigt, wenn das Info-Feld befüllt -->
+{{#Info}}
+<!-- Button zum Öffnen des Bottom Sheets -->
+    <button class="show-modal-btn">Show Bottom Sheet</button>
+
+    <!-- Bottom Sheet Container -->
+    <div class="bottom-sheet-container">
+      <div class="sheet-overlay"></div>
+      <div class="sheet-content">
+        <div class="sheet-header">
+          <div class="drag-icon"><span></span></div>
+        </div>
+        <div class="sheet-body">
+          <p class="info">
+            {{Info}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const showModalButton = document.querySelector(".show-modal-btn");
+      const bottomSheetContainer = document.querySelector(".bottom-sheet-container");
+      const sheetContent = bottomSheetContainer.querySelector(".sheet-content");
+      const sheetOverlay = bottomSheetContainer.querySelector(".sheet-overlay");
+
+      let isDragging = false;
+      let startY, startHeight;
+
+      // Öffnen des Modals
+      const showBottomSheet = () => {
+        bottomSheetContainer.classList.add("show");
+        document.body.style.overflowY = "hidden"; // Scrollen deaktivieren
+        updateSheetHeight(50); // Modal bei 50% Höhe starten
+      };
+
+      // Aktualisiere die Höhe des Modals
+      const updateSheetHeight = (height) => {
+        sheetContent.style.height = `${height}vh`; // Höhe in Prozent des Viewports
+        bottomSheetContainer.classList.toggle("fullscreen", height === 100);
+      };
+
+      // Schließen des Modals
+      const hideBottomSheet = () => {
+        bottomSheetContainer.classList.remove("show");
+        document.body.style.overflowY = "auto"; // Scrollen reaktivieren
+      };
+
+      // Ziehvorgang starten
+      const dragStart = (e) => {
+        isDragging = true;
+        startY = e.pageY || e.touches?.[0].pageY; // Startposition erfassen
+        startHeight = parseInt(sheetContent.style.height); // Aktuelle Höhe merken
+        bottomSheetContainer.classList.add("dragging");
+      };
+
+      // Ziehvorgang
+      const dragging = (e) => {
+        if (!isDragging) return;
+        const deltaY = (startY - (e.pageY || e.touches?.[0].pageY)); // Differenz berechnen
+        const newHeight = startHeight + (deltaY / window.innerHeight) * 100;
+        updateSheetHeight(Math.min(Math.max(newHeight, 0), 100)); // Höhe begrenzen
+      };
+
+      // Ziehvorgang beenden
+      const dragStop = () => {
+        isDragging = false;
+        bottomSheetContainer.classList.remove("dragging");
+        const sheetHeight = parseInt(sheetContent.style.height);
+
+        // Schwellenwerte für das Schließen oder Maximieren
+        if (sheetHeight < 35) {
+          hideBottomSheet(); // Schließen, wenn kleiner als 35%
+        } else if (sheetHeight > 70) {
+          updateSheetHeight(100); // Vollbild bei mehr als 70%
+        } else {
+          updateSheetHeight(50); // Zurück zu 50% Höhe
+        }
+      };
+
+      // Event Listener für Maus- und Touch-Events
+      sheetContent.addEventListener("mousedown", dragStart);
+      document.addEventListener("mousemove", dragging);
+      document.addEventListener("mouseup", dragStop);
+
+      sheetContent.addEventListener("touchstart", dragStart, { passive: true });
+      document.addEventListener("touchmove", dragging, { passive: false });
+      document.addEventListener("touchend", dragStop);
+
+      sheetOverlay.addEventListener("click", hideBottomSheet);
+      showModalButton.addEventListener("click", showBottomSheet);
+    </script>
+{{/Info}}
     </body>
 </html> 
