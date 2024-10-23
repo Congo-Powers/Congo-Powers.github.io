@@ -26,11 +26,11 @@
 	<img class="flag" src="flag-de.png">
 		<p class="answer">
 
-			{{Deutsch}}
+			Deutsch
 			
-			{{#Deutsch-Info}}<br>
-				<span class="flexion-info">{{Deutsch-Info}}</span>
-			{{/Deutsch-Info}}
+			<br>
+				<span class="flexion-info">Deutsch-Info</span>
+			
 
 		</p>
 </div>
@@ -44,23 +44,23 @@
 				<tts service="android" voice="sv_SE">{{Schwedisch}}</tts>	
 				<span class="disabled">{{tts sv_SE:Schwedisch}}</span>
 	
-				{{#Schwedisch-Flexion}}<br>
+				<br>
 							<span class="flexion">
-								{{Schwedisch-Flexion}}
+								Schwedisch-Flexion
 							</span>
-				{{/Schwedisch-Flexion}}
+				
 
-				{{#Schwedisch-Info}}<br>
+				<br>
 							<span class="flexion-info">
-								{{Schwedisch-Info}}
+								Schwedisch-Info
 							</span>
-				{{/Schwedisch-Info}}
+				
 
 		</p>
 </div>
 
 <!-- Dragable Bottom Sheet Modal; wird nur angezeigt, wenn das Info-Feld befüllt -->
-{{#Info}}
+
 <!-- Button zum Öffnen des Bottom Sheets -->
     <button class="show-modal-btn">Show Bottom Sheet</button>
 
@@ -73,7 +73,7 @@
         </div>
         <div class="sheet-body">
           <p class="info">
-            {{Info}}
+            Info
           </p>
         </div>
       </div>
@@ -151,6 +151,6 @@
       sheetOverlay.addEventListener("click", hideBottomSheet);
       showModalButton.addEventListener("click", showBottomSheet);
     </script>
-{{/Info}}
+
     </body>
 </html> 
