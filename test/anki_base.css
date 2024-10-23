@@ -1,7 +1,7 @@
 /* Fonts und Icons importieren */
 @font-face {
   font-family: 'Nunito';
-  src: url(_nunito.woff) format('woff');
+  src: url(nunito.woff) format('woff');
   font-style: bold, italic;
 }
 
@@ -15,7 +15,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("_fa-regular-400.woff2") format("woff2");
+  src: url("fa-regular-400.woff2") format("woff2");
 }
 
 .far,
@@ -33,7 +33,7 @@
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url("_fa-solid-900.woff2") format("woff2");
+  src: url("fa-solid-900.woff2") format("woff2");
 }
 
 .fas,
