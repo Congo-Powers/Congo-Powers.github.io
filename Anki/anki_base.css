@@ -184,6 +184,16 @@ img.flag-de {
 	top: 4px;
 }
 
+/* Button, der das Bottom Sheet Modal öffnet */
+button.show-modal-btn {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 0.8em;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Das Info-Icon */
 .info > i.fa-circle-info {
 	font-size: 0.8em;
