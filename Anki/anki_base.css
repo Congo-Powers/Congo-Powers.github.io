@@ -59,6 +59,16 @@
 	min-height: 100px;
 }
 
+/* Button, der das Bottom Sheet Modal öffnet */
+button.show-modal-btn {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 0.8em;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Das Tags Icon */
 .tags > i {
 	text-align: left;
